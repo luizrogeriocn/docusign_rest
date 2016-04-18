@@ -599,6 +599,8 @@ module DocusignRest
     #   statusDateTime - The date/time the envelope was created
     #   uri            - The relative envelope uri
     def create_envelope_from_document(options={})
+      http.set_debug_output($stdout)
+
       ios = create_file_ios(options[:files])
       file_params = create_file_params(ios)
 
@@ -622,17 +624,7 @@ module DocusignRest
                 )
 
       response = http.request(request)
-      puts '#'*90
-      puts '-'*90
-      puts 'REQUEST'
-      puts '-'*90
-      puts request
-      puts '#'*90
-      puts '-'*90
-      puts 'RESPONSE'
-      puts '-'*90
-      puts response
-      puts '#'*90
+
       JSON.parse(response.body)
     end
 
