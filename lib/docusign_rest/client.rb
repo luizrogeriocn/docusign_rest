@@ -622,6 +622,17 @@ module DocusignRest
                 )
 
       response = http.request(request)
+      puts '#'*90
+      puts '-'*90
+      puts 'REQUEST'
+      puts '-'*90
+      puts request
+      puts '#'*90
+      puts '-'*90
+      puts 'RESPONSE'
+      puts '-'*90
+      puts response
+      puts '#'*90
       JSON.parse(response.body)
     end
 
