@@ -599,7 +599,6 @@ module DocusignRest
     #   statusDateTime - The date/time the envelope was created
     #   uri            - The relative envelope uri
     def create_envelope_from_document(options={})
-      http.set_debug_output($stdout)
 
       ios = create_file_ios(options[:files])
       file_params = create_file_params(ios)
@@ -618,6 +617,7 @@ module DocusignRest
       uri = build_uri("/accounts/#{acct_id}/envelopes")
 
       http = initialize_net_http_ssl(uri)
+      http.set_debug_output($stdout)
 
       request = initialize_net_http_multipart_post_request(
                   uri, post_body, file_params, headers(options[:headers])
